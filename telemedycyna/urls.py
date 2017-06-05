@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^select2/', include('django_select2.urls')),
     url(r'^$', home, name = 'base.html'),
     url(r'^drugs/$', lek, name = 'drugs.html'),
-    url(r'^doctor/$', doktor, name = 'doctor.html'),
+    url(r'^doctor/$', doctor, name = 'doctor.html'),
     url(r'^calculate/$', main_drug, name = 'calculate.html'),
+    url(r'^recommendation/$', main_doc, name='doctor_recommendation.html'),
 ]

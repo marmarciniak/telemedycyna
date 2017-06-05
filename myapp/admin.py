@@ -12,3 +12,5 @@ class DrugAdmin(admin.ModelAdmin):
 
 admin.site.register(myapp.models.Leki)
 admin.site.register(myapp.models.Drugs)
+admin.site.register(myapp.models.Doctor)
+admin.site.register(myapp.models.Fever)
