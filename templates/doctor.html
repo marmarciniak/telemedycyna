@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'main_page.css' %}">
+  {{ form.media.css }}
+  <style type="text/css">
+    select {
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+<form method="post" action="">
+  {% csrf_token %}
+
+
+    <center><h4>Wybierz wiek dziecka w latach (0 jeśli poniżej roku) </h4>{{ form.age }}</center>
+    <center><h4> Czy dziecko ma gorączkę? </h4>{{ form.fever }}</center>
+    <center><h4> Jeśli tak to od ilu dni? </h4>{{ form.how_long }}</center>
+    <center><h4> Wybierz z listy inne objawy </h4>{{ form.symptoms }}</center>
+ <center> <input type="submit" value="Zatwierdź"/> </center>
+</form>
+<script src="{% static '//code.jquery.com/jquery-2.1.4.min.js' %}"></script>
+<script type="text/javascript">
+  window.onerror = function (msg) {
+    $("body").attr("JSError", msg);
+  }
+</script>
+{{ form.media.js }}
+</body>

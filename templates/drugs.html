@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'main_page.css' %}">
+  {{ form.media.css }}
+  <style type="text/css">
+    select {
+      width: 200px;
+    }
+  </style>
+    <style>
+        body { background-image: url ("leki.jpg"); }
+        body { background-image: url ("leki.jpg"); }
+    </style>
+</head>
+<body>
+<form method="post" action="">
+  {% csrf_token %}
+<center><br> <br> <br> Podaj wiek swojego dziecka: {{ form.age }} <br> <br>
+    Wybierz masę dziecka (w kg): {{form.weight}} <br> <br>
+    Wybierz wiek dziecka w latach (0 jeśli poniżej roku): {{form.drug}} <br> <br>
+    Jeśli leku nie ma na liście wpisz dawkę na kg masy ciała:  {{form.other_drug}} <br> <br>
+ <input type="submit" value="Zatwierdź"/> </center>
+</form>
+</body>
