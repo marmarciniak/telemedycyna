@@ -5,7 +5,7 @@
 <head>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'main_page.css' %}">
+    <link rel="stylesheet" href="{% static 'drugs.css' %}">
   {{ form.media.css }}
   <style type="text/css">
     select {
@@ -20,10 +20,9 @@
 <body>
 <form method="post" action="">
   {% csrf_token %}
-<center><br> <br> <br> Podaj wiek swojego dziecka: {{ form.age }} <br> <br>
+<center><br>
     Wybierz masę dziecka (w kg): {{form.weight}} <br> <br>
-    Wybierz lek: {{form.drug}} <br> <br>
-    Jeśli leku nie ma na liście wpisz dawkę na kg masy ciała:  {{form.other_drug}} <br> <br>
+    Wpisz dawkę leku na kg masy ciała:  {{form.other_drug}} <br> <br>
  <input type="submit" value="Zatwierdź"/> </center>
 </form>
 </body>

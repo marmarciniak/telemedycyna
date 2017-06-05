@@ -4,12 +4,9 @@ from easy_select2 import *
 from django_select2.forms import *
 
 class DrugsForm(forms.ModelForm):
-    drug = forms.ModelChoiceField(queryset=Leki.objects.all())
-
 
     class Meta:
         model = Drugs
-        widgets = { 'field': apply_select2(forms.Select)}
         fields = '__all__'
 
 

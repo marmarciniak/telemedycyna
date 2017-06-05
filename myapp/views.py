@@ -39,37 +39,12 @@ def main_drug(request):
     objectslist = Drugs.objects.all()
     number= len(objectslist) - 1
     weight = int(objectslist[number].weight)
-    age = int(objectslist[number].age)
-    drug = str(objectslist[number].drug)
-    other_drug = (objectslist[number].other_drug)
+    dose = (objectslist[number].other_drug)
+    warning ='Przed podaniem upewnij się czy lek jest odpowiedni dla dzieci w tym wieku'
+    drug_dose = int(dose)*int(weight)
 
-    dose_table=[]
-    if drug !='inny':
-        base = Leki.objects.all()
-        for i in range(len(base)):
-            if base[i].nazwa == drug:
-                dose_table.append(base[i].dawka)
-                dose_table.append(base[i].wiek)
-                dose_table.append(base[i].jednostka)
-                break
-    else:
-        dose_table.append(other_drug)
-        dose_table.append('Przed podaniem upewnij się czy lek jest odpowiedni dla dzieci w tym wieku')
-        dose_table.append('ml/mg')
 
-    dose = dose_table[0]
-    age_for_drug = dose_table[1]
-    jednostka = dose_table[2]
-    if str(type(age_for_drug))== "<class 'str'>":
-        drug_dose = int(dose)*int(weight)
-        warning = age_for_drug
-    elif age<age_for_drug:
-        drug_dose = 'Dziecko może być za małe aby podać mu ten lek. Proszę skonsultować się z lekarzem lub farmaceutą'
-        warning = ''
-    else:
-        drug_dose = int(dose)*int(weight)
-        warning = ''
-    return render(request, "calculate.html", {'drug_dose':drug_dose, 'warning':warning, 'jednostka':jednostka})
+    return render(request, "calculate.html", {'drug_dose':drug_dose, 'warning':warning})
 
 def main_doc(request):
     objectslist = Doctor.objects.all()

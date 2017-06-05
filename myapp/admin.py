@@ -10,7 +10,7 @@ DrugForm= select2_modelform(Drugs, attrs={'width': '250px'})
 class DrugAdmin(admin.ModelAdmin):
     form = DrugForm
 
-admin.site.register(myapp.models.Leki)
+
 admin.site.register(myapp.models.Drugs)
 admin.site.register(myapp.models.Doctor)
 admin.site.register(myapp.models.Fever)
