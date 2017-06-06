@@ -1,11 +1,13 @@
-from django.shortcuts import redirect
+
 from django.template.response import TemplateResponse
-
-
-from django.shortcuts import render
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
 from myapp.models import *
+from django.http import HttpResponseRedirect
 from myapp.forms import *
-
+from django.contrib.auth.decorators import login_required
+from django.contrib import auth
 
 def lek(request):
     drugs_f = Drugs()
@@ -28,10 +30,42 @@ def doctor(request):
 
     ctx = {'form': form, 'DocForm': DocForm}
     return TemplateResponse(request, 'doctor.html', ctx)
+@login_required(login_url='http://127.0.0.1:8000/signup/')
+def info(request):
+    print(request.user.is_authenticated())
+    baby_f = BabyInfo()
+    form = InfoForm(request.POST or None, instance = baby_f)
+
+    if form.is_valid():
+        baby_f = form.save(commit=False)
+        baby_f.user = request.user
+        baby_f.save()
+        return redirect(main_info)
+
+    ctx = {'form': form, 'InfoForm': InfoForm}
+    return TemplateResponse(request, 'info.html', ctx)
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('main')
+    else:
+        form = UserCreationForm()
+    return render(request, 'signup.html', {'form': form})
 
 def home(request):
     return TemplateResponse(request, 'mainp.html')
 
+def main_info(request):
+
+
+    return render(request, 'formsave.html')
 def main(request):
     return render(request, 'base.html')
 def main_drug(request):
@@ -96,4 +130,12 @@ def main_doc(request):
 
     return render(request, "doctor_recommendation.html", {'recommendation': recommend})
 
+def profil(request):
 
+    babies = BabyInfo.objects.filter(user=request.user)
+    context = {"babies":babies}
+
+    return render(request,"profile.html", context)
+
+def logout(request):
+    return render(request, "logout.html")

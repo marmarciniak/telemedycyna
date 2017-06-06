@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+<table border = "0", width="100%">
+
+            <tr>
+            <td align="right"> <a href="http://127.0.0.1:8000/logout/"> Wyloguj się </a>
+            </tr>
+        </table>
+<h2> Witaj {{request.user}}</h2>
+
+<ul>
+    <h3>Twoje dodane dane:</h3>
+{% for baby in babies %}
+    <li>Imię dziecka: <b> {{baby.baby_name}}</b>, Data urodzenia dziecka: <b>{{baby.age}}</b>, Waga dziecka: <b>{{baby.weight}}</b></li>
+{% endfor %}
+</ul>
+
+<a href="http://127.0.0.1:8000/formularz"> Dodaj kolejne dziecko</a> <br>
+<a href="http://127.0.0.1:8000"> Przejdź do strony głównej</a>
+
+</body>
+</html>

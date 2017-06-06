@@ -1,6 +1,6 @@
 """telemedycyna URL Configuration
 
-The `urlpatterns` list routes URLs to views. For more information please see:
+The `urlpatterns` list routes URLs to views. For more information please see:ngo template
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
 Examples:
 Function views
@@ -19,6 +19,8 @@ from telemedycyna import settings
 from django.conf.urls.static import static
 from django.conf.urls import url
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
+from myapp import views as core_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -28,4 +30,11 @@ urlpatterns = [
     url(r'^doctor/$', doctor, name = 'doctor.html'),
     url(r'^calculate/$', main_drug, name = 'calculate.html'),
     url(r'^recommendation/$', main_doc, name='doctor_recommendation.html'),
+    url(r'^login/$', auth_views.login,name='login'),
+    url(r'^logout/$',auth_views.logout,{'next_page': '/formularz'}),
+    url(r'^signup/$', core_views.signup, name='signup'),
+    url(r'^formularz/$', info, name='info.html'),
+    url(r'^accounts/profile/$', profil, name='profil.html'),
+    url(r'^saved/$', main_info, name='formsave.html'),
+
 ]

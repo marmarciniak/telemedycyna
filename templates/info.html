@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'doctor.css' %}">
+  {{ form.media.css }}
+  <style type="text/css">
+    select {
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+<form method="post" action="">
+  {% csrf_token %}
+
+
+
+    <center><h4> Podaj imię swojego dziecka </h4>{{ form.baby_name}}</center>
+    <center><h4> Podaj datę urodzenia swojego dziecka </h4>{{ form.age}}</center>
+    <center><h4> Podaj wagę swojego dziecka (w kg) </h4>{{ form.weight}}</center>
+
+ <center> <input type="submit" value="Zatwierdź"/> </center>
+</form>
+<script src="{% static '//code.jquery.com/jquery-2.1.4.min.js' %}"></script>
+<script type="text/javascript">
+  window.onerror = function (msg) {
+    $("body").attr("JSError", msg);
+  }
+</script>
+{{ form.media.js }}
+</body>

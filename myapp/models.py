@@ -2,6 +2,8 @@ from django.db import models
 from django import forms
 from django.core.validators import MaxValueValidator, MinValueValidator
 from decimal import Decimal
+from django.contrib.auth.models import User
+from datetime import datetime
 # Create your models here.
 
 class Drugs(models.Model):
@@ -32,3 +34,15 @@ class Fever(models.Model):
         db_table = 'fever'
         managed = False
 
+class BabyInfo(models.Model):
+
+
+    baby_name = models.TextField()
+    weight = models.IntegerField()
+    age = models.DateField( default=datetime.now)
+    user = models.ForeignKey(to = User, related_name='baby_f', blank=True,null=True)
+
+
+class DoctorContatct(models.Model):
+    doctor_choice= models.TextField()
+    description = models.TextField()

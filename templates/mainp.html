@@ -9,10 +9,33 @@
 </head>
 <body>
 <div>
-    <h3>STRONA GŁÓWNA</h3>
+    {% if user.is_authenticated %}
+     <table border = "0", width="100%">
+
+            <tr>
+            <td align="right"> <a href="http://127.0.0.1:8000/account/loggedout/"> Wyloguj się </a>
+            </tr>
+        </table>
+    {% else %}
+    <table border = "0", width="100%">
+
+            <tr>
+            <td align="right"> <a href="http://127.0.0.1:8000/signup/"> Zarejestruj się </a>
+           <a href="http://127.0.0.1:8000/login/"> Zaloguj się </a> </td>
+            </tr>
+        </table>
+
+
+    {%endif %}
     <h4>
-        <a href="http://127.0.0.1:8000/drugs/"> sprawdź dawkę leku </a> <br>
-        <a href="http://127.0.0.1:8000/doctor/"> jaki lek podać </a> <br>
+        <table border="0", width ="100%">
+            <tr>
+               <td align="left"><a href="http://127.0.0.1:8000/drugs/"> sprawdź dawkę leku </a><br>
+                   <a href="http://127.0.0.1:8000/doctor/"> jaki lek podać </a> </td>
+            </tr>
+        </table>
+
+
 
     </h4>
 </div>

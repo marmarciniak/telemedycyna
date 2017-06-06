@@ -131,3 +131,5 @@ STATICFILES_DIRS = (
 
 
 mimetypes.add_type("image/svg+xml",".svg", True)
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_URL = '/'

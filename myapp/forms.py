@@ -19,3 +19,8 @@ class DocForm(forms.ModelForm):
         model = Doctor
         fields = '__all__'
 
+class InfoForm(forms.ModelForm):
+
+    class Meta:
+        model = BabyInfo
+        fields = '__all__'
