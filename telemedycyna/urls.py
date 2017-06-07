@@ -31,10 +31,14 @@ urlpatterns = [
     url(r'^calculate/$', main_drug, name = 'calculate.html'),
     url(r'^recommendation/$', main_doc, name='doctor_recommendation.html'),
     url(r'^login/$', auth_views.login,name='login'),
-    url(r'^logout/$',auth_views.logout,{'next_page': '/formularz'}),
+    url(r'^logout/$', auth_views.logout, {
+        'template_name': 'logout.html'
+    }, name='logout'),
     url(r'^signup/$', core_views.signup, name='signup'),
     url(r'^formularz/$', info, name='info.html'),
-    url(r'^accounts/profile/$', profil, name='profil.html'),
+    url(r'^profile/$', profil, name='profil.html'),
     url(r'^saved/$', main_info, name='formsave.html'),
+    url(r'^contact_doctor/$', doc_cont, name='contact.html'),
+    url(r'^mail_send/$', main_contact, name='mail_send.html'),
 
 ]

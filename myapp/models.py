@@ -4,10 +4,10 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from decimal import Decimal
 from django.contrib.auth.models import User
 from datetime import datetime
+
 # Create your models here.
 
 class Drugs(models.Model):
-
 
     weight = models.IntegerField(default=1, validators=[MinValueValidator(1)], verbose_name='Wybierz masę dziecka (w kg)')
     other_drug = models.TextField(default = 0,verbose_name='Jeśli leku nie ma na liście wpisz dawkę na kg masy ciała')
@@ -46,3 +46,5 @@ class BabyInfo(models.Model):
 class DoctorContatct(models.Model):
     doctor_choice= models.TextField()
     description = models.TextField()
+    user = models.ForeignKey(to = User, related_name='contact_f', blank=True,null=True)
+

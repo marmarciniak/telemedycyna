@@ -2,6 +2,7 @@ from django import forms
 from .models import *
 from easy_select2 import *
 from django_select2.forms import *
+from django.forms import ModelForm, Textarea
 
 class DrugsForm(forms.ModelForm):
 
@@ -24,3 +25,12 @@ class InfoForm(forms.ModelForm):
     class Meta:
         model = BabyInfo
         fields = '__all__'
+
+class ContactForm(forms.ModelForm):
+
+    doctor_choices = (('dr Marek Kowalski', 'marek.kowalski'),('dr Aneta Nowak','aneta.nowak'),('dr Olaf Kos','olaf.kos'))
+    doctor_choice = forms.ChoiceField(choices = doctor_choices, label = 'Wybierz lekarza')
+    class Meta:
+        model = DoctorContatct
+        fields = '__all__'
+

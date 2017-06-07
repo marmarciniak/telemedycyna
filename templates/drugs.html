@@ -20,9 +20,11 @@
 <body>
 <form method="post" action="">
   {% csrf_token %}
+    {{form.baby}}
 <center><br>
     Wybierz masę dziecka (w kg): {{form.weight}} <br> <br>
     Wpisz dawkę leku na kg masy ciała:  {{form.other_drug}} <br> <br>
  <input type="submit" value="Zatwierdź"/> </center>
+    <a href="http://127.0.0.1:8000/"> Wróć do strony głównej </a>
 </form>
 </body>

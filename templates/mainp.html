@@ -13,9 +13,12 @@
      <table border = "0", width="100%">
 
             <tr>
-            <td align="right"> <a href="http://127.0.0.1:8000/account/loggedout/"> Wyloguj się </a>
+
+                <td align="right"><a href="{% url 'logout' %}">Wyloguj się </a>
+                    <a href="http://127.0.0.1:8000/profile"> Mój profil </a> </td>
             </tr>
         </table>
+    Witaj {{request.user}} !<br><br>
     {% else %}
     <table border = "0", width="100%">
 
@@ -24,16 +27,16 @@
            <a href="http://127.0.0.1:8000/login/"> Zaloguj się </a> </td>
             </tr>
         </table>
+    Witaj!<br><br>
 
 
     {%endif %}
+
+
+    Nie wiesz ile leku podać swojemu dziecku? Sprawdź <a href="http://127.0.0.1:8000/drugs/"> TUTAJ </a> <br><br>
+    Twoje dziecko ma gorączkę, kaszel lub inne objawy? Sprawdź co może być przyczyną i czy konieczna jest wizyta u lekarza <a href="http://127.0.0.1:8000/doctor/"> TUTAJ </a><br><br>
+    Chcesz uzyskać konsultację lekarską bez wychodzenia z domu? Kliknij <a href="http://127.0.0.1:8000/contact_doctor/">TUTAJ </a></td>
     <h4>
-        <table border="0", width ="100%">
-            <tr>
-               <td align="left"><a href="http://127.0.0.1:8000/drugs/"> sprawdź dawkę leku </a><br>
-                   <a href="http://127.0.0.1:8000/doctor/"> jaki lek podać </a> </td>
-            </tr>
-        </table>
 
 
 

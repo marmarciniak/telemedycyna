@@ -14,14 +14,15 @@
   </style>
 </head>
 <body>
-<form method="post" action="">
+<subm method="post" action="">
   {% csrf_token %}
 
 
-    <center><h4>Wybierz wiek dziecka w miesiącach </h4>{{ form.age }}</center>
-    <center><h4> Podaj temperaturę dziecka </h4>{{ form.fever }}</center>
-    <center><h4> Wybierz z listy inne objawy </h4>{{ form.symptoms }}</center>
- <center> <input type="submit" value="Zatwierdź"/> </center>
+    <center><h4>Wybierz lekarza </h4>{{ form.doctor_choice }}</center>
+    <center><h4> Wpisz treść wiadomości (opisz jak najdokładniej symptomy,<br> jeśli dziecko jest zarejestrowane w Twoim profilu wystarczy że wpiszesz jego imię, jeśli nie
+    wpisz również wiek dziecka).<br> Jeśli chcesz aby doktor do Ciebie oddzwonił, możesz również podać nr telefonu. </h4>{{ form.description}}</center>
+
+ <center> <input type="submit" value="Wyślij"/> </center>
 </form>
     <a href="http://127.0.0.1:8000/"> Wróć do strony głównej </a>
 <script src="{% static '//code.jquery.com/jquery-2.1.4.min.js' %}"></script>

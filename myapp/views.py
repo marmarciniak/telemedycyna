@@ -7,8 +7,9 @@ from myapp.models import *
 from django.http import HttpResponseRedirect
 from myapp.forms import *
 from django.contrib.auth.decorators import login_required
-from django.contrib import auth
-
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import redirect
+from django.core.mail import send_mail
 def lek(request):
     drugs_f = Drugs()
     form = DrugsForm(request.POST or None, instance = drugs_f)
@@ -18,6 +19,7 @@ def lek(request):
         return redirect(main_drug)
 
     ctx = {'form': form, 'DrugsForm': DrugsForm}
+
     return TemplateResponse(request, 'drugs.html', ctx)
 
 def doctor(request):
@@ -32,7 +34,7 @@ def doctor(request):
     return TemplateResponse(request, 'doctor.html', ctx)
 @login_required(login_url='http://127.0.0.1:8000/signup/')
 def info(request):
-    print(request.user.is_authenticated())
+
     baby_f = BabyInfo()
     form = InfoForm(request.POST or None, instance = baby_f)
 
@@ -44,6 +46,32 @@ def info(request):
 
     ctx = {'form': form, 'InfoForm': InfoForm}
     return TemplateResponse(request, 'info.html', ctx)
+
+@login_required(login_url='http://127.0.0.1:8000/signup/')
+def doc_cont(request):
+    contact_f = DoctorContatct()
+    form = ContactForm(request.POST or None, instance = contact_f)
+
+    if form.is_valid():
+        contact_f = form.save(commit = False)
+        contact_f.user = request.user
+        contact_f.save()
+        return redirect(main_contact)
+
+    ctx = {'form' : form, 'ContactForm' : ContactForm}
+    return TemplateResponse(request, 'contact.html',ctx)
+
+def main_contact(request):
+    objectslist = DoctorContatct.objects.all()
+    number = len(objectslist) - 1
+    user = str(objectslist[number].user)
+    subject = 'Mail from: ' + user
+    message = str(objectslist[number].description)
+    sent_to = str(objectslist[number].doctor_choice) + '@example.com'
+
+    #send_mail(subject,message,(user + '@example.com'),[sent_to])
+
+    return render(request, 'mail_send.html')
 
 def signup(request):
     if request.method == 'POST':
@@ -137,5 +165,6 @@ def profil(request):
 
     return render(request,"profile.html", context)
 
-def logout(request):
-    return render(request, "logout.html")
+def auth_logout(request):
+  logout(request)
+  return redirect('home')
