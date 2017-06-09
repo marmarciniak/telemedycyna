@@ -14,7 +14,7 @@ class DrugsForm(forms.ModelForm):
 
 class DocForm(forms.ModelForm):
     symptoms_choices=(('none','brak'),('kaszel','kaszel'),('biegunka','biegunka'),('wymioty','wymioty'),('zaczerwienione gardło','zaczerwienione gardło'),
-                      ('ból ucha','ból ucha'), ('zwiększone ślinienie','zwiększone ślinienie'),('wysypka','wysypka'))
+                      ('ból ucha','ból ucha'), ('zwiększoneślinienie','zwiększone ślinienie'),('wysypka','wysypka'))
     symptoms = forms.ChoiceField(choices= symptoms_choices, label='Symptomy ')
     class Meta:
         model = Doctor

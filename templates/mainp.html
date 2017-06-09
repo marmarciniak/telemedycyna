@@ -1,46 +1,48 @@
-
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load staticfiles %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Strona Główna</title>
-    <link rel="stylesheet" href="{% static 'main_page.css' %}">
-</head>
-<body>
-<div>
+
+{% block content %}
+
+
+
+
+
     {% if user.is_authenticated %}
-     <table border = "0", width="100%">
 
-            <tr>
-
-                <td align="right"><a href="{% url 'logout' %}">Wyloguj się </a>
-                    <a href="http://127.0.0.1:8000/profile"> Mój profil </a> </td>
-            </tr>
-        </table>
-    Witaj {{request.user}} !<br><br>
+<h1> Witaj {{request.user}} ! </h1><br><br>
     {% else %}
-    <table border = "0", width="100%">
 
-            <tr>
-            <td align="right"> <a href="http://127.0.0.1:8000/signup/"> Zarejestruj się </a>
-           <a href="http://127.0.0.1:8000/login/"> Zaloguj się </a> </td>
-            </tr>
-        </table>
     Witaj!<br><br>
-
 
     {%endif %}
 
 
-    Nie wiesz ile leku podać swojemu dziecku? Sprawdź <a href="http://127.0.0.1:8000/drugs/"> TUTAJ </a> <br><br>
-    Twoje dziecko ma gorączkę, kaszel lub inne objawy? Sprawdź co może być przyczyną i czy konieczna jest wizyta u lekarza <a href="http://127.0.0.1:8000/doctor/"> TUTAJ </a><br><br>
-    Chcesz uzyskać konsultację lekarską bez wychodzenia z domu? Kliknij <a href="http://127.0.0.1:8000/contact_doctor/">TUTAJ </a></td>
-    <h4>
+    <center>
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="{% static 'pill.png'%}" alt="Generic placeholder image" width="140" height="140">
+          <h2>Kalkulator dawki leku</h2>
+          <p>Nie wiesz ile leku podać swojemu dziecku? </p>
+          <p><a class="btn btn-default" href="/drugs/" role="button">Sprawdź! &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="{% static 'baby.jpg'%}" alt="Generic placeholder image" width="140" height="140">
+          <h2>Chore dziecko?</h2>
+          <p>Twoje dziecko ma gorączkę, kaszel lub inne objawy? Sprawdź co może być przyczyną i czy konieczna jest wizyta u lekarza</p>
+          <p><a class="btn btn-default" href="/doctor/" role="button">Sprawdź! &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="{% static 'stetoskop.jpg'%}" alt="Generic placeholder image" width="140" height="140">
+          <h2>Skontaktuj się z lekarzem</h2>
+          <p> Chcesz uzyskać konsultację lekarską bez wychodzenia z domu? </p>
+          <p><a class="btn btn-default" href="/contact_doctor/" role="button">Kliknij! &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+        </center>
 
 
 
-    </h4>
-</div>
-</body>
-</html>
+
+    </div>
+{% endblock %}

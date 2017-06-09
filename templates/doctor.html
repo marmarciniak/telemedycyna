@@ -1,34 +1,13 @@
-
-<!DOCTYPE html>
-{% load staticfiles %}
-<html>
-<head>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'doctor.css' %}">
-  {{ form.media.css }}
-  <style type="text/css">
-    select {
-      width: 200px;
-    }
-  </style>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
 <form method="post" action="">
   {% csrf_token %}
-
 
     <center><h4>Wybierz wiek dziecka w miesiącach </h4>{{ form.age }}</center>
     <center><h4> Podaj temperaturę dziecka </h4>{{ form.fever }}</center>
     <center><h4> Wybierz z listy inne objawy </h4>{{ form.symptoms }}</center>
  <center> <input type="submit" value="Zatwierdź"/> </center>
 </form>
-    <a href="http://127.0.0.1:8000/"> Wróć do strony głównej </a>
-<script src="{% static '//code.jquery.com/jquery-2.1.4.min.js' %}"></script>
-<script type="text/javascript">
-  window.onerror = function (msg) {
-    $("body").attr("JSError", msg);
-  }
-</script>
-{{ form.media.js }}
-</body>
+
+
+{%endblock%}

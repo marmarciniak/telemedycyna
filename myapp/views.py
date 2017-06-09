@@ -142,7 +142,7 @@ def main_doc(request):
     else:
         if fever < 38:
             fev_cat = 7
-        if fever >38:
+        if fever >=38:
             fev_cat = 8
 
     base = Fever.objects.all()
@@ -161,7 +161,9 @@ def main_doc(request):
 def profil(request):
 
     babies = BabyInfo.objects.filter(user=request.user)
-    context = {"babies":babies}
+    messages = DoctorContatct.objects.filter(user=request.user)
+    context = {"babies":babies,"messages":messages}
+
 
     return render(request,"profile.html", context)
 

@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
+{% extends 'base.html' %}
+{% block content %}
 
-</head>
-<body>
 <h3> Odpowiednia dawka leku dla Twojego dziecka to: {{ drug_dose }} ml <br>
 {{warning}}</h3>
 
- <a href="http://127.0.0.1:8000/"> Wróć do strony głównej </a>
-</body>
-</html>
+{% endblock %}

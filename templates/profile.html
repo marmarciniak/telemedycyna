@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
+{% extends 'base.html' %}
+{% block content %}
 
-</head>
-<body>
-<table border = "0", width="100%">
-
-            <tr>
-            <td align="right"> <a href="http://127.0.0.1:8000/logout/"> Wyloguj się </a>
-            </tr>
-        </table>
 <h2> Witaj {{request.user}}</h2>
 
 <ul>
@@ -19,10 +8,11 @@
 {% for baby in babies %}
     <li>Imię dziecka: <b> {{baby.baby_name}}</b>, Data urodzenia dziecka: <b>{{baby.age}}</b>, Waga dziecka: <b>{{baby.weight}} kg</b></li>
 {% endfor %}
+    {% for message in messages %}
+    {{messages.description}}
+    {% endfor %}
 </ul>
 
 <a href="http://127.0.0.1:8000/formularz"> Dodaj kolejne dziecko</a> <br>
-<a href="http://127.0.0.1:8000"> Przejdź do strony głównej</a>
 
-</body>
-</html>
+{%endblock%}

@@ -12,5 +12,5 @@ admin.site.register(myapp.models.BabyInfo)
 class YourModelAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size':'20'})},
-        models.TextField: {'widget': Textarea(attrs={'rows':1000, 'cols':40})},
+        models.TextField: {'widget': Textarea(attrs={'rows':100, 'cols':40})},
     }

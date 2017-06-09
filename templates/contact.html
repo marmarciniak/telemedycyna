@@ -1,35 +1,13 @@
-
-<!DOCTYPE html>
-{% load staticfiles %}
-<html>
-<head>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'doctor.css' %}">
-  {{ form.media.css }}
-  <style type="text/css">
-    select {
-      width: 200px;
-    }
-  </style>
-</head>
-<body>
-<subm method="post" action="">
+{% extends 'base.html' %}
+{% block content %}
+<form method="post" action="">
   {% csrf_token %}
 
-
     <center><h4>Wybierz lekarza </h4>{{ form.doctor_choice }}</center>
-    <center><h4> Wpisz treść wiadomości (opisz jak najdokładniej symptomy,<br> jeśli dziecko jest zarejestrowane w Twoim profilu wystarczy że wpiszesz jego imię, jeśli nie
-    wpisz również wiek dziecka).<br> Jeśli chcesz aby doktor do Ciebie oddzwonił, możesz również podać nr telefonu. </h4>{{ form.description}}</center>
+    <center><h5> Wpisz treść wiadomości (opisz jak najdokładniej symptomy,<br> jeśli dziecko jest zarejestrowane w Twoim profilu wystarczy że wpiszesz jego imię, jeśli nie
+    wpisz również wiek dziecka).<br> Jeśli chcesz aby doktor do Ciebie oddzwonił, możesz również podać nr telefonu. </h5>{{ form.description}}</center>
 
  <center> <input type="submit" value="Wyślij"/> </center>
 </form>
-    <a href="http://127.0.0.1:8000/"> Wróć do strony głównej </a>
-<script src="{% static '//code.jquery.com/jquery-2.1.4.min.js' %}"></script>
-<script type="text/javascript">
-  window.onerror = function (msg) {
-    $("body").attr("JSError", msg);
-  }
-</script>
-{{ form.media.js }}
-</body>
+
+{% endblock %}

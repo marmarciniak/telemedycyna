@@ -1,23 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
 
-<!DOCTYPE html>
-{% load staticfiles %}
-<html>
-<head>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'drugs.css' %}">
-  {{ form.media.css }}
-  <style type="text/css">
-    select {
-      width: 200px;
-    }
-  </style>
-    <style>
-        body { background-image: url ("leki.jpg"); }
-        body { background-image: url ("leki.jpg"); }
-    </style>
-</head>
-<body>
 <form method="post" action="">
   {% csrf_token %}
     {{form.baby}}
@@ -25,6 +8,5 @@
     Wybierz masę dziecka (w kg): {{form.weight}} <br> <br>
     Wpisz dawkę leku na kg masy ciała:  {{form.other_drug}} <br> <br>
  <input type="submit" value="Zatwierdź"/> </center>
-    <a href="http://127.0.0.1:8000/"> Wróć do strony głównej </a>
-</form>
-</body>
+
+{%endblock%}
