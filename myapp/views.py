@@ -82,7 +82,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('main')
+            return redirect(home)
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
@@ -100,7 +100,7 @@ def main_drug(request):
 
     objectslist = Drugs.objects.all()
     number= len(objectslist) - 1
-    weight = int(objectslist[number].weight)
+    weight = float(objectslist[number].weight)
     dose = (objectslist[number].other_drug)
     warning ='Przed podaniem upewnij się czy lek jest odpowiedni dla dzieci w tym wieku'
     drug_dose = int(dose)*int(weight)
@@ -113,7 +113,18 @@ def main_doc(request):
     number =  len(objectslist) - 1
     age = int(objectslist[number].age)
     fever = float(objectslist[number].fever)
-    symptoms = str(objectslist[number].symptoms)
+    symptoms0 = objectslist[number].symptoms
+    symptoms1=[]
+    for i in range(2, len(symptoms0)):
+        if symptoms0[i] == "'":
+            break
+        else:
+            symptoms1.append(symptoms0[i])
+
+    symptoms = ''
+    for i in range(0,len(symptoms1)):
+        symptoms += symptoms1[i]
+
     #age category
     if age<6:
         age_cat = 1

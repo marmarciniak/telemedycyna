@@ -8,11 +8,14 @@
 {% for baby in babies %}
     <li>Imię dziecka: <b> {{baby.baby_name}}</b>, Data urodzenia dziecka: <b>{{baby.age}}</b>, Waga dziecka: <b>{{baby.weight}} kg</b></li>
 {% endfor %}
+<br><br>
+Twoje wysłane wiadomości: <br>
     {% for message in messages %}
-    {{messages.description}}
-    {% endfor %}
+    Do: {{message.doctor_choice}}@lekarz.com<br>
+    Treść: {{message.description}}<br><br>
+    {%endfor %}
 </ul>
 
-<a href="http://127.0.0.1:8000/formularz"> Dodaj kolejne dziecko</a> <br>
+<a href="/formularz"> Dodaj kolejne dziecko</a> <br>
 
 {%endblock%}

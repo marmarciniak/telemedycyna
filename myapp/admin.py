@@ -8,9 +8,10 @@ admin.site.register(myapp.models.Drugs)
 admin.site.register(myapp.models.Doctor)
 admin.site.register(myapp.models.Fever)
 admin.site.register(myapp.models.BabyInfo)
+admin.site.register(myapp.models.DoctorContatct)
 
 class YourModelAdmin(admin.ModelAdmin):
     formfield_overrides = {
-        models.CharField: {'widget': TextInput(attrs={'size':'20'})},
-        models.TextField: {'widget': Textarea(attrs={'rows':100, 'cols':40})},
+        models.CharField: {'widget': TextInput(attrs={'size':'10'})},
+        models.TextField: {'widget': Textarea(attrs={'rows':10, 'cols':1})},
     }

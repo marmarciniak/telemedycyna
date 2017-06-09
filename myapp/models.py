@@ -19,7 +19,7 @@ class Drugs(models.Model):
 
 class Doctor(models.Model):
     age = models.IntegerField(default=0, validators=[MinValueValidator(0)],verbose_name='Wybierz wiek dziecka w miesiącach ')
-    fever=models.DecimalField(max_digits = 3, decimal_places = 1, verbose_name = 'Podaj temperature dziecka')
+    fever=models.DecimalField(max_digits = 3, decimal_places = 1,validators =[MinValueValidator(35),MaxValueValidator(43)], verbose_name = 'Podaj temperature dziecka')
     symptoms=models.TextField()
 
 class Fever(models.Model):
